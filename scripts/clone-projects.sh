@@ -4,7 +4,7 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 mkdir -p "$ROOT/projects"
-grep -vE '^\s*(#|$)' "$ROOT/projects.txt" | while read -r slug; do
+{ grep -vE "^\s*(#|$)" "$ROOT/projects.txt" || true; } | while read -r slug; do
   name="${slug##*/}"
   dest="$ROOT/projects/$name"
   if [ -d "$dest/.git" ]; then echo "exists: projects/$name"; continue; fi
