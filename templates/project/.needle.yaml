@@ -1,0 +1,9 @@
+# Workspace binding for NEEDLE. Only bead_cli, gates, and workspace.labels are
+# legal here; worker/agent/budget keys belong in ~/.config/needle/config.yaml.
+bead_cli:
+  backend: bead-rs
+
+gates:
+  - type: command
+    commands:
+      - scripts/definition-of-done.sh

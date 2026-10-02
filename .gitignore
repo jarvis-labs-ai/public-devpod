@@ -1,0 +1,30 @@
+# Sub-projects: each directory under projects/ is its own public git repo.
+# Nothing inside them is tracked here; projects.txt is the manifest.
+projects/*
+!projects/README.md
+
+# Secrets and credentials — never commit, this repo is public
+*.env
+.env.*
+*.pem
+*.key
+*.crt
+*secret*.yaml
+*secret*.yml
+.llm-providers.env
+
+# Tool state
+.devcontainer/installation-report.md
+.claude/settings.local.json
+.mcp.json
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+*.log
+*.tmp
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/

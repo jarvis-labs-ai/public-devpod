@@ -1,0 +1,2 @@
+# One public repo per line as owner/name. Lines starting with # are ignored.
+# Cloned into projects/<name> by scripts/clone-projects.sh.

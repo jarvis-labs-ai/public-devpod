@@ -1,0 +1,25 @@
+{
+  "name": "public-devpod",
+  "image": "mcr.microsoft.com/devcontainers/base:debian12",
+  "runArgs": ["--privileged"],
+  "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/node:1": { "version": "lts" },
+    "ghcr.io/devcontainers/features/python:1": { "version": "3.12" },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code",
+        "github.copilot",
+        "github.copilot-chat",
+        "ms-python.python",
+        "suzuk10430.ccusage-vscode"
+      ]
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/install-tools.sh",
+  "shutdownAction": "none"
+}

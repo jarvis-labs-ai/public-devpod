@@ -1,0 +1,21 @@
+# Host-level NEEDLE config. install-tools.sh copies this to ~/.config/needle/config.yaml
+# ONLY if that file does not exist yet; edit the copy in ~/.config, not this seed, to tune
+# a running host. Workspace-level keys (bead_cli, gates, labels) live in each project's
+# .needle.yaml instead and would be silently dropped here.
+agent:
+  default: claude            # switch to claude-interactive to bill the Claude subscription
+  timeout: 1800              # seconds per dispatch; a timeout releases the bead
+
+worker:
+  max_workers: 4             # per-host ceiling; the guide's advice is to measure RSS first
+  idle_timeout: 60           # seconds between queue polls when nothing is ready
+  idle_action: exit          # a worker that drains its workspace exits; that is normal
+  identifier_scheme: sequential
+  enforce_shipped_work: true # a close counts only if a pushed commit exists since dispatch
+
+outcome:
+  quarantine_after_failures: 3   # circuit-break: stop re-dispatching after 3 failures
+
+budget:
+  warn_usd: 20
+  stop_usd: 50

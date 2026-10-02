@@ -1,0 +1,22 @@
+# Tracker: live SQLite store is local; .beads/checkpoint/ is committed.
+.beads/beads.db
+.beads/*.db-*
+.beads/bypasses.jsonl
+
+# Secrets (public repository)
+*.env
+.env.*
+*.pem
+*.key
+
+# Build and tool state
+node_modules/
+dist/
+build/
+target/
+__pycache__/
+*.pyc
+.venv/
+*.log
+.DS_Store
+.claude/settings.local.json
