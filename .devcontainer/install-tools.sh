@@ -71,7 +71,10 @@ fi
 
 step "tmux"
 [ -f "$HOME/.tmux.conf" ] || ln -sf "$REPO_DIR/.tmux.conf" "$HOME/.tmux.conf"
-ok "tmux.conf linked"
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+  git clone -q https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm" >/dev/null 2>&1 && "$HOME/.tmux/plugins/tpm/bin/install_plugins" >/dev/null 2>&1 || true
+fi
+if [ -d "$HOME/.tmux/plugins/tpm" ]; then ok "tmux.conf linked; tpm installed"; else fail "tpm clone (tmux works without plugins)"; fi
 
 step "clone public projects from projects.txt"
 if bash "$REPO_DIR/scripts/clone-projects.sh"; then ok "projects cloned (see projects/)"; else fail "clone-projects.sh"; fi
